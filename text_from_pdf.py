@@ -39,8 +39,9 @@ def get_text(file_path):
             if isinstance(element, LTTextContainer):
                 # Используем функцию извлечения текста и формата для каждого текстового элемента
                 (line_text, format_per_line) = text_extraction(element)
+                print(line_text, format_per_line)
 
-                if 10.019999999999982 in format_per_line:
+                if 10.019999999999982 in format_per_line or 10.980000000000018 in format_per_line and len(line_text.split()) > 3:
                     page_content.append(line_text)
 
                 if "Список литературы" in line_text:
@@ -58,7 +59,7 @@ def get_text(file_path):
 
 
 # Открываем файл в бинарном режиме только для чтения
-with open('article.pdf', 'rb') as file:
+with open('article1.pdf', 'rb') as file:
     a = get_text(file)
 
 print(a)

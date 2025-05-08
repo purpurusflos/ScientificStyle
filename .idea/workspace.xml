@@ -4,13 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aa72fc2a-2ff8-47ec-82db-bc49048cde1b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/ScientificStyle.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/text_from_pdf.py" afterDir="false" />
+    <list default="true" id="aa72fc2a-2ff8-47ec-82db-bc49048cde1b" name="Changes" comment="Скачивает pdf-файлы статей с сайта Вестника НГУ">
+      <change afterPath="$PROJECT_DIR$/syntax_from_sentence.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/text_from_pdf.py" beforeDir="false" afterPath="$PROJECT_DIR$/text_from_pdf.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,6 +24,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "purpurusflos"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/purpurusflos/ScientificStyle.git",
+    "accountId": "44239a34-151c-41c0-8fd6-98da982f6d7f"
+  }
+}]]></component>
   <component name="ProjectColorInfo"><![CDATA[{
   "associatedIndex": 2
 }]]></component>
@@ -40,11 +49,16 @@
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "Python.copy1.executor": "Run",
     "Python.my_version.executor": "Run",
+    "Python.new_file.executor": "Run",
+    "Python.pdf_from_nsu_vestnik.executor": "Run",
+    "Python.skyeng.executor": "Run",
+    "Python.syntax_from_sentence.executor": "Run",
     "Python.text_from_pdf.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "master",
-    "last_opened_file_path": "C:/Workspace/MyPyCharmProjects/ScientificStyle"
+    "last_opened_file_path": "C:/Workspace/MyPyCharmProjects/ScientificStyle",
+    "settings.editor.selected.configurable": "database.data.views.appearance"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -52,8 +66,8 @@
       <recent name="C:\Workspace\MyPyCharmProjects\ScientificStyle" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.text_from_pdf">
-    <configuration name="copy1" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Python.syntax_from_sentence">
+    <configuration name="new_file" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="ScientificStyle" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -66,7 +80,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/copy1.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/new_file.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -75,7 +89,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="my_version" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="pdf_from_nsu_vestnik" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="ScientificStyle" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -88,7 +102,51 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/my_version.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/pdf_from_nsu_vestnik.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="skyeng" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="ScientificStyle" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/skyeng.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="syntax_from_sentence" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="ScientificStyle" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/syntax_from_sentence.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -121,9 +179,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.syntax_from_sentence" />
+        <item itemvalue="Python.new_file" />
         <item itemvalue="Python.text_from_pdf" />
-        <item itemvalue="Python.my_version" />
-        <item itemvalue="Python.copy1" />
+        <item itemvalue="Python.pdf_from_nsu_vestnik" />
+        <item itemvalue="Python.skyeng" />
       </list>
     </recent_temporary>
   </component>
@@ -142,6 +202,45 @@
       <option name="presentableId" value="Default" />
       <updated>1745467787085</updated>
     </task>
+    <task id="LOCAL-00001" summary="Извлечение текста из пдф файла без деления на абзацы">
+      <option name="closed" value="true" />
+      <created>1745509746398</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1745509746398</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Извлечение текста из пдф файла без деления на абзацы">
+      <option name="closed" value="true" />
+      <created>1745509900833</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1745509900833</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Работает для статей 2004~, 2014 и 2025 годов">
+      <option name="closed" value="true" />
+      <created>1745514915912</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1745514915912</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Скачивает pdf-файлы статей с сайта Вестника НГУ">
+      <option name="closed" value="true" />
+      <created>1745563202779</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1745563202779</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Извлечение текста из пдф файла без деления на абзацы" />
+    <MESSAGE value="Работает для статей 2004~, 2014 и 2025 годов" />
+    <MESSAGE value="Скачивает pdf-файлы статей с сайта Вестника НГУ" />
+    <option name="LAST_COMMIT_MESSAGE" value="Скачивает pdf-файлы статей с сайта Вестника НГУ" />
   </component>
 </project>

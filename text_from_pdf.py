@@ -39,7 +39,7 @@ def get_text(file_path):
             if isinstance(element, LTTextContainer):
                 # Используем функцию извлечения текста и формата для каждого текстового элемента
                 (line_text, format_per_line) = text_extraction(element)
-                print(line_text, format_per_line)
+                # print(line_text, format_per_line)
 
                 if 10.019999999999982 in format_per_line or 10.980000000000018 in format_per_line and len(line_text.split()) > 3:
                     page_content.append(line_text)
@@ -57,9 +57,11 @@ def get_text(file_path):
                     return text2
     return page_content
 
+# def get_all_texts(path):
+
 
 # Открываем файл в бинарном режиме только для чтения
-with open('article1.pdf', 'rb') as file:
+with open('C:/Workspace/MyPyCharmProjects/ScientificStyle/Articles/51985063e4f2787c6202858714acb50c.pdf', 'rb') as file:
     a = get_text(file)
 
 print(a)

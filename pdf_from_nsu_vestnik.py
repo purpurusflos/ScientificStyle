@@ -45,7 +45,3 @@ def pdf_url_from_vestnik(year):
                                 if pdf_url[-3:] == "pdf":
                                     pdf_links.append(pdf_url)
     return pdf_links
-
-
-for link in pdf_url_from_vestnik(2008):
-    pdf_from_link(link)

@@ -11,7 +11,7 @@ def text_extraction(element):
     line_formats = []
     for text_line in element:
         if isinstance(text_line, LTTextContainer):
-            # Итеративно обходим каждый символ в строке текста
+            # Обходим каждый символ в строке текста
             for character in text_line:
                 if isinstance(character, LTChar):
                     # Добавляем к символу название шрифта
@@ -24,6 +24,19 @@ def text_extraction(element):
     # Возвращаем кортеж с текстом в каждой строке вместе с его форматом
     return line_text, format_per_line
 
+# Очищаем текст от знаков переноса на новую строку и
+# объединяем в одну строку
+def clear_text(page_content):
+    text1 = ""
+    text2 = ""
+    for text in page_content:
+        split_text1 = text.split("-\n")
+        clean_text1 = "".join(split_text1)
+        text1 += clean_text1
+    split_text2 = text1.split("\n")
+    clean_text2 = "".join(split_text2)
+    text2 += clean_text2
+    return text2
 
 def get_text(file_path):
     page_content = []
@@ -34,34 +47,19 @@ def get_text(file_path):
 
         # Находим элементы, составляющие страницу
         for i, element in enumerate(page_elements):
-
             # Проверяем, является ли элемент текстовым
             if isinstance(element, LTTextContainer):
                 # Используем функцию извлечения текста и формата для каждого текстового элемента
                 (line_text, format_per_line) = text_extraction(element)
                 # print(line_text, format_per_line)
 
-                if 10.019999999999982 in format_per_line or 10.980000000000018 in format_per_line and len(line_text.split()) > 3:
+                if 10.019999999999982 in format_per_line or 10.980000000000018 in format_per_line or 11.0 in format_per_line and len(line_text.split()) > 3:
                     page_content.append(line_text)
 
                 if "Список литературы" in line_text:
-                    text1 = ""
-                    text2 = ""
-                    for text in page_content:
-                        split_text1 = text.split("-\n")
-                        clean_text1 = "".join(split_text1)
-                        text1 += clean_text1
-                    split_text2 = text1.split("\n")
-                    clean_text2 = "".join(split_text2)
-                    text2 += clean_text2
-                    return text2
-    return page_content
+                    return clear_text(page_content)
+    return clear_text(page_content)
 
-# def get_all_texts(path):
-
-
-# Открываем файл в бинарном режиме только для чтения
-with open('C:/Workspace/MyPyCharmProjects/ScientificStyle/Articles/51985063e4f2787c6202858714acb50c.pdf', 'rb') as file:
-    a = get_text(file)
-
-print(a)
+# with open('C:/Workspace/MyPyCharmProjects/ScientificStyle/Articles/' + "9e6298c347c5028dc71bad249e2f517d.pdf", 'rb') as file:
+#     text = get_text(file)
+#     print(text)

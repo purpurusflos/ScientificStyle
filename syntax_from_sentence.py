@@ -93,3 +93,25 @@ def introductory_words(text):
         'Sentences without introductory words' : sent_without_intr_words
     }
     return result
+
+# Подсчитываем предложения с причастными и деепричастными оборотами и без них
+def participal_phrases(text):
+    participal_phrase = 0
+    adverb_phrase = 0
+    no_phrases = 0
+    for sentence in text:
+        # Получаем список всех синтаксических зависимостей
+        tags = [token[2] for token in sentence]
+        # Проверяем, есть ли в предложении причастные и деепричастные обороты
+        if 'advcl' in tags:
+            adverb_phrase += 1
+        if 'amod' in tags:
+            participal_phrase += 1
+        if 'advcl' not in tags and 'amod' not in tags:
+            no_phrases += 1
+    result = {
+        'Sentences with participal phrases' : participal_phrase,
+        'Sentences with verbal adverb phrases' : adverb_phrase,
+        'Sentences without participal phrases': no_phrases
+    }
+    return result

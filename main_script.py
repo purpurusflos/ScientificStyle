@@ -5,6 +5,7 @@ from syntax_from_sentence import get_UDs
 from syntax_from_sentence import impersonal_sentences
 from syntax_from_sentence import compound_complex
 from syntax_from_sentence import introductory_words
+from syntax_from_sentence import participal_phrases
 import os
 
 text1 = 'В полной  мере  их  значение  лидеры  антибольшевистского  движения  осознали  лишь  под  «занавес» своей борьбы. Они явно опасались заимствовать  у  большевиков  их  опыт,  оправдавший себя  в  условиях  гражданской  войны.  Намного быстрее,  к  концу  1918 г.,  обозначилось  стремление  в  условиях  инфляции  и  товарного  дефицита  в  процессе  повышения  заработной  платы сглаживать  различия  в  материальной  оценке разных категорий служащих. Сходство с тем, что происходило  в  условиях  советской  власти,  очевидно, хотя это не осознавалось лидерами контрреволюции.'
@@ -34,5 +35,5 @@ for file_name in files:
     else:
         # Для каждого слова в каждом предложении получаем слова с UD-разметкой
         text_UD = get_UDs(text)
-        # Выводим результат
-        print(impersonal_sentences(text_UD), compound_complex(text_UD), introductory_words(text_UD))
+        # Выводим результат для каждого предложения
+        print(impersonal_sentences(text_UD), compound_complex(text_UD), introductory_words(text_UD), participal_phrases(text_UD))

@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aa72fc2a-2ff8-47ec-82db-bc49048cde1b" name="Changes" comment="Скачивает pdf-файлы статей с сайта Вестника НГУ">
-      <change afterPath="$PROJECT_DIR$/syntax_from_sentence.py" afterDir="false" />
+    <list default="true" id="aa72fc2a-2ff8-47ec-82db-bc49048cde1b" name="Changes" comment="Считает безличные, сложные и простые предложения, их типы, предложения с вводными конструкциями">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/text_from_pdf.py" beforeDir="false" afterPath="$PROJECT_DIR$/text_from_pdf.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main_script.py" beforeDir="false" afterPath="$PROJECT_DIR$/main_script.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/syntax_from_sentence.py" beforeDir="false" afterPath="$PROJECT_DIR$/syntax_from_sentence.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,6 +48,7 @@
   "keyToString": {
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "Python.copy1.executor": "Run",
+    "Python.main_script.executor": "Run",
     "Python.my_version.executor": "Run",
     "Python.new_file.executor": "Run",
     "Python.pdf_from_nsu_vestnik.executor": "Run",
@@ -66,7 +67,29 @@
       <recent name="C:\Workspace\MyPyCharmProjects\ScientificStyle" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.syntax_from_sentence">
+  <component name="RunManager" selected="Python.main_script">
+    <configuration name="main_script" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="ScientificStyle" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main_script.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="new_file" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="ScientificStyle" />
       <option name="ENV_FILES" value="" />
@@ -103,28 +126,6 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/pdf_from_nsu_vestnik.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="skyeng" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="ScientificStyle" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/skyeng.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -179,11 +180,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.syntax_from_sentence" />
-        <item itemvalue="Python.new_file" />
+        <item itemvalue="Python.main_script" />
         <item itemvalue="Python.text_from_pdf" />
+        <item itemvalue="Python.new_file" />
+        <item itemvalue="Python.syntax_from_sentence" />
         <item itemvalue="Python.pdf_from_nsu_vestnik" />
-        <item itemvalue="Python.skyeng" />
       </list>
     </recent_temporary>
   </component>
@@ -234,13 +235,31 @@
       <option name="project" value="LOCAL" />
       <updated>1745563202779</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Получает теги Universal Dependencies для введенного текста">
+      <option name="closed" value="true" />
+      <created>1746706516839</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1746706516839</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Считает безличные, сложные и простые предложения, их типы, предложения с вводными конструкциями">
+      <option name="closed" value="true" />
+      <created>1746804367235</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1746804367235</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Извлечение текста из пдф файла без деления на абзацы" />
     <MESSAGE value="Работает для статей 2004~, 2014 и 2025 годов" />
     <MESSAGE value="Скачивает pdf-файлы статей с сайта Вестника НГУ" />
-    <option name="LAST_COMMIT_MESSAGE" value="Скачивает pdf-файлы статей с сайта Вестника НГУ" />
+    <MESSAGE value="Получает теги Universal Dependencies для введенного текста" />
+    <MESSAGE value="Считает безличные, сложные и простые предложения, их типы, предложения с вводными конструкциями" />
+    <option name="LAST_COMMIT_MESSAGE" value="Считает безличные, сложные и простые предложения, их типы, предложения с вводными конструкциями" />
   </component>
 </project>

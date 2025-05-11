@@ -59,7 +59,3 @@ def get_text(file_path):
                 if "Список литературы" in line_text:
                     return clear_text(page_content)
     return clear_text(page_content)
-
-# with open('C:/Workspace/MyPyCharmProjects/ScientificStyle/Articles/' + "9e6298c347c5028dc71bad249e2f517d.pdf", 'rb') as file:
-#     text = get_text(file)
-#     print(text)

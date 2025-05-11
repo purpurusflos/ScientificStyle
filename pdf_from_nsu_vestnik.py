@@ -2,11 +2,11 @@ from bs4 import BeautifulSoup
 import requests
 
 
-# По ссылке на pdf-файл скачиваем файл
-def pdf_from_link(link):
+# По ссылке на pdf-файл скачиваем файл в указанную папку
+def pdf_from_link(link, directory):
     # Проверяем HTTP response status code
     response = requests.get(link)
-    file_Path = "C:/Workspace/MyPyCharmProjects/ScientificStyle/Articles/" + str(link[-36:])
+    file_Path = directory + '/' + str(link[-36:])
     if response.status_code == 200:
         # Создаем новый файл и сохраняем в нем файл по ссылке
         with open(file_Path, 'wb') as file:

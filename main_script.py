@@ -8,6 +8,7 @@ from syntax_from_sentence import introductory_words
 from syntax_from_sentence import participal_phrases
 from readability_index import readability
 import os
+import re
 
 # Указываем путь к директории
 directory = "C:/Workspace/MyPyCharmProjects/ScientificStyle/Articles"
@@ -25,9 +26,11 @@ for file_name in files:
     with open(directory + '/' + file_name, 'rb') as file:
         # Извлекаем текст в виде строки из pdf-файла
         text = get_text(file)
-        # print(text[:1000])  # чтобы понять, если текст считался неверно
-    if text != "":
+        # Убираем цитирования и при необходимости восстанавливаем постановку пробелов
+        text1 = re.sub(r"\s\[.*?]", "", text)
+        clear_text = re.sub(r"([а-я\)])([\.\?\!]{1})([А-Я])", r"\1\2 \3", text1)
+    if clear_text != "":
         # Для каждого слова в каждом предложении получаем слова с UD-разметкой
-        text_UD = get_UDs(text)
+        text_UD = get_UDs(clear_text)
         # Выводим результат для каждого предложения
-        print(readability(text), impersonal_sentences(text_UD), compound_complex(text_UD), introductory_words(text_UD), participal_phrases(text_UD))
+        print(readability(clear_text), impersonal_sentences(text_UD), compound_complex(text_UD), introductory_words(text_UD), participal_phrases(text_UD))

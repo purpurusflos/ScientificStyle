@@ -13,7 +13,8 @@ def ave_length(sentences):
     words_count = 0
     sentences_count = len(sentences)
     for s in sentences:
-        words_count += len(s.split())
+        # Считаем слова по количеству пробелов
+        words_count += s.count(" ") + 1
     return words_count / sentences_count
 
 # Рассчитываем среднюю длину слов в слогах
@@ -39,7 +40,7 @@ def readability(text):
         tokens = [_.text for _ in tokenize(sentence.text)]
         sent_tokens.append(tokens)
         sentences.append(sentence.text)
-    # Считаем индекс читабельности для русского языка по формуле
+    # Считаем индекс читабельности для русского языка по формуле Флеша
     # 206,836 – (1,52 × средняя длина предложения) – (65,14 × среднее число слогов)
     index = 206.836 - (1.52 * ave_length(sentences)) - (65.14 * ave_syllable(sent_tokens))
     return index

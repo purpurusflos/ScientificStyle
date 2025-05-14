@@ -6,10 +6,10 @@ import requests
 def pdf_from_link(link, directory):
     # Проверяем HTTP response status code
     response = requests.get(link)
-    file_Path = directory + '/' + str(link[-36:])
+    file_path = directory + '/' + str(link[-36:])
     if response.status_code == 200:
         # Создаем новый файл и сохраняем в нем файл по ссылке
-        with open(file_Path, 'wb') as file:
+        with open(file_path, 'wb') as file:
             file.write(response.content)
     else:
         print('Failed to download file')

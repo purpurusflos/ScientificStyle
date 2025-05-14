@@ -4,10 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aa72fc2a-2ff8-47ec-82db-bc49048cde1b" name="Changes" comment="Считает безличные, сложные и простые предложения, их типы, предложения с вводными конструкциями">
+    <list default="true" id="aa72fc2a-2ff8-47ec-82db-bc49048cde1b" name="Changes" comment="Считает индекс читабельности">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main_script.py" beforeDir="false" afterPath="$PROJECT_DIR$/main_script.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/syntax_from_sentence.py" beforeDir="false" afterPath="$PROJECT_DIR$/syntax_from_sentence.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pdf_from_nsu_vestnik.py" beforeDir="false" afterPath="$PROJECT_DIR$/pdf_from_nsu_vestnik.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/readability_index.py" beforeDir="false" afterPath="$PROJECT_DIR$/readability_index.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,6 +53,7 @@
     "Python.my_version.executor": "Run",
     "Python.new_file.executor": "Run",
     "Python.pdf_from_nsu_vestnik.executor": "Run",
+    "Python.readability_index.executor": "Run",
     "Python.skyeng.executor": "Run",
     "Python.syntax_from_sentence.executor": "Run",
     "Python.text_from_pdf.executor": "Run",
@@ -67,7 +69,7 @@
       <recent name="C:\Workspace\MyPyCharmProjects\ScientificStyle" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.main_script">
+  <component name="RunManager" selected="Python.readability_index">
     <configuration name="main_script" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="ScientificStyle" />
       <option name="ENV_FILES" value="" />
@@ -112,7 +114,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="pdf_from_nsu_vestnik" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="readability_index" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="ScientificStyle" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -125,7 +127,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/pdf_from_nsu_vestnik.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/readability_index.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -180,11 +182,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.readability_index" />
         <item itemvalue="Python.main_script" />
-        <item itemvalue="Python.text_from_pdf" />
         <item itemvalue="Python.new_file" />
+        <item itemvalue="Python.text_from_pdf" />
         <item itemvalue="Python.syntax_from_sentence" />
-        <item itemvalue="Python.pdf_from_nsu_vestnik" />
       </list>
     </recent_temporary>
   </component>
@@ -251,7 +253,23 @@
       <option name="project" value="LOCAL" />
       <updated>1746804367235</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Считает причастные и деепричастные обороты">
+      <option name="closed" value="true" />
+      <created>1746850412985</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1746850412986</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Считает индекс читабельности">
+      <option name="closed" value="true" />
+      <created>1746944674406</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1746944674406</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -260,6 +278,8 @@
     <MESSAGE value="Скачивает pdf-файлы статей с сайта Вестника НГУ" />
     <MESSAGE value="Получает теги Universal Dependencies для введенного текста" />
     <MESSAGE value="Считает безличные, сложные и простые предложения, их типы, предложения с вводными конструкциями" />
-    <option name="LAST_COMMIT_MESSAGE" value="Считает безличные, сложные и простые предложения, их типы, предложения с вводными конструкциями" />
+    <MESSAGE value="Считает причастные и деепричастные обороты" />
+    <MESSAGE value="Считает индекс читабельности" />
+    <option name="LAST_COMMIT_MESSAGE" value="Считает индекс читабельности" />
   </component>
 </project>

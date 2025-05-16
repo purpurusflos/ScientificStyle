@@ -49,6 +49,7 @@ def impersonal_sentences(text):
         'Personal sentences' : personal,
         'Impersonal sentences' : impersonal
     }
+    #return result
     return personal, impersonal
 
 # Подсчитываем простые предложения, различные типы сложных предложений в тексте
@@ -74,6 +75,7 @@ def compound_complex(text):
         'Compound sentences' : compound_sent,
         'Simple sentences': simple_sent
     }
+    #return result
     return result
 
 # Подсчитываем предложения с вводными конструкциями и без них

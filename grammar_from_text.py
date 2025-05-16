@@ -31,11 +31,4 @@ def get_grammar(text):
                 past += 1
             elif tense == 'futr':
                 future += 1
-    result = {
-        'nouns': nouns, 'neut': neut, '%neut': round(100 / nouns * neut if nouns > 0 else 0, 2),
-        'femn': femn, '%femn': round(100 / nouns * femn if nouns > 0 else 0, 2), 'masc': masc, '%masc': round(100 / nouns * masc if nouns > 0 else 0, 2),
-        'sing': sg, 'plur': pl, 'verbs': verbs,
-        #'verb(pres)': pres, 'verb(past)': past, 'verb(fut)': futur,
-        '%verb(pres)': round(100 / verbs * pres if verbs > 0 else 0, 2), '%verb(past)': round(100 / verbs * past if verbs > 0 else 0, 2), '%verb(fut)': round(100 / verbs * future if verbs > 0 else 0, 2)
-    }
-    return result
+    return neut, femn, masc, nouns, sg, pl, pres, past, future, verbs

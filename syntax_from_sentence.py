@@ -49,7 +49,7 @@ def impersonal_sentences(text):
         'Personal sentences' : personal,
         'Impersonal sentences' : impersonal
     }
-    return result
+    return personal, impersonal
 
 # Подсчитываем простые предложения, различные типы сложных предложений в тексте
 def compound_complex(text):
@@ -92,7 +92,7 @@ def introductory_words(text):
         'Sentences with introductory words' : sent_with_intr_words,
         'Sentences without introductory words' : sent_without_intr_words
     }
-    return result
+    return true_compound, complex_sent, compound_sent, simple_sent
 
 # Подсчитываем предложения с причастными и деепричастными оборотами и без них
 def participal_phrases(text):

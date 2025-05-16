@@ -26,7 +26,7 @@ def text_extraction(element):
 
 # Очищаем текст от знаков переноса на новую строку и
 # объединяем в одну строку
-def clear_text(page_content):
+def clean_text(page_content):
     text1 = ""
     text2 = ""
     for text in page_content:
@@ -57,5 +57,5 @@ def get_text(file_path):
                     page_content.append(line_text)
 
                 if "Список литературы" in line_text:
-                    return clear_text(page_content)
-    return clear_text(page_content)
+                    return clean_text(page_content)
+    return clean_text(page_content)

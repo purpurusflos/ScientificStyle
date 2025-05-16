@@ -2,7 +2,7 @@ import pymorphy2
 import re
 
 def get_grammar(text):
-    # делим текст на слова
+    # Делим текст на слова
     words = re.findall(r'[а-яА-ЯёЁa-zA-Z]+', text)
     morph = pymorphy2.MorphAnalyzer()
     neut = femn = masc = nouns = sg = pl = pres = past = future = verbs = 0

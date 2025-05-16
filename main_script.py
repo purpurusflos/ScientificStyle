@@ -35,6 +35,67 @@ results = {
         #'verb(pres)': [], 'verb(past)': [], 'verb(fut)': [],
         '%verb(pres)': [], '%verb(past)': [], '%verb(fut)': []
         }
+results_syntax = {
+        'text': [],
+        'personal': [],
+        'impersonal': [],
+        'compound': [],
+        'true_compound': [],
+        'complex': [],
+        'simple': []
+        }
+
+def get_result_grammar(neut, femn, masc, nouns, sg, pl, pres, past, future, verbs, file):
+    results['text'].append(file)
+    results['nouns'].append(nouns)
+    #results['neut'].append(neut)
+    results['%neut'].append(round(100 / nouns * neut if nouns > 0 else 0, 2))
+    #results['femn'].append(femn)
+    results['%femn'].append(round(100 / nouns * femn if nouns > 0 else 0, 2))
+    #results['masc'].append(masc)
+    results['%masc'].append(round(100 / nouns * masc if nouns > 0 else 0, 2))
+    results['%sing'].append(round(100 / nouns * sg if nouns > 0 else 0, 2))
+    results['%plur'].append(round(100 / nouns * pl if nouns > 0 else 0, 2))
+    results['verbs'].append(verbs)
+    # results['verb(pres)'].append(pres)
+    results['%verb(pres)'].append(round(100 / verbs * pres if verbs > 0 else 0, 2))
+    # results['verb(past)'].append(past)
+    results['%verb(past)'].append(round(100 / verbs * past if verbs > 0 else 0, 2))
+    # results['verb(fut)'].append(future)
+    results['%verb(fut)'].append(round(100 / verbs * future if verbs > 0 else 0, 2))
+
+def get_result_syntax(personal, impersonal, compound_sent, true_compound, complex_sent, simple_sent, file):
+    results_syntax['text'].append(file)
+    results_syntax['personal'].append(personal)
+    results_syntax['impersonal'].append(impersonal)
+    results_syntax['compound'].append(compound_sent)
+    results_syntax['true_compound'].append(true_compound)
+    results_syntax['complex'].append(complex_sent)
+    results_syntax['simple'].append(simple_sent)
+
+# Получаем статистику для первых 10 файлов (можно изменить)
+for num, file_name in enumerate(files[:10]):
+    # Открываем файл в бинарном режиме только для чтения
+    with open(directory + '/' + file_name, 'rb') as file:
+        # Извлекаем текст в виде строки из pdf-файла
+        text = get_text(file)
+        # Убираем цитирования и при необходимости восстанавливаем постановку пробелов
+        text1 = re.sub(r"\s\[.*?]", "", text)
+        clear_text = re.sub(r"([а-я\)])([\.\?\!]{1})([А-Я])", r"\1\2 \3", text1)
+    if clear_text != "":
+        # Для каждого слова в каждом предложении получаем слова с UD-разметкой
+        text_UD = get_UDs(clear_text)
+        # Выводим результат для каждого предложения
+        print(process_morphology(file_name, clear_text))
+        print(readability(clear_text), impersonal_sentences(text_UD), compound_complex(text_UD), introductory_words(text_UD), participal_phrases(text_UD))
+        
+        neut, femn, masc, nouns, sg, pl, pres, past, future, verbs = get_grammar(text)
+        get_result_grammar(neut, femn, masc, nouns, sg, pl, pres, past, future, verbs, "scientific text " + str(num))
+
+        personal, impersonal = impersonal_sentences(text_UD)
+        compound_sent, true_compound, complex_sent, simple_sent = compound_complex(text_UD)
+        get_result_syntax(personal, impersonal, compound_sent, true_compound, complex_sent, simple_sent, "scientific text " + str(num))
+
 grammar_nouns = pd.DataFrame({
         'text': results['text'],
         'nouns': results['nouns'],
@@ -57,43 +118,21 @@ grammar_verbs = pd.DataFrame({
         #'verb(fut)': results['verb(fut)'],
         '%verb(fut)': results['%verb(fut)']
         })
+syntax_impersonal = pd.DataFrame({
+        'text': results_syntax['text'],
+        'personal': results_syntax['personal'],
+        'impersonal': results_syntax['impersonal']
+        })
+syntax_compound_complex = pd.DataFrame({
+        'text': results_syntax['text'],
+        'compound': results_syntax['compound'],
+        'true_compound': results_syntax['true_compound'],
+        'complex': results_syntax['complex'],
+        'simple': results_syntax['simple'],
+        })
 
-def get_result(neut, femn, masc, nouns, sg, pl, pres, past, future, verbs, file):
-    results['text'].append(file)
-    results['nouns'].append(nouns)
-    #results['neut'].append(neut)
-    results['%neut'].append(round(100 / nouns * neut if nouns > 0 else 0, 2))
-    #results['femn'].append(femn)
-    results['%femn'].append(round(100 / nouns * femn if nouns > 0 else 0, 2))
-    #results['masc'].append(masc)
-    results['%masc'].append(round(100 / nouns * masc if nouns > 0 else 0, 2))
-    results['%sing'].append(round(100 / nouns * sg if nouns > 0 else 0, 2))
-    results['%plur'].append(round(100 / nouns * pl if nouns > 0 else 0, 2))
-    results['verbs'].append(verbs)
-    # results['verb(pres)'].append(pres)
-    results['%verb(pres)'].append(round(100 / verbs * pres if verbs > 0 else 0, 2))
-    # results['verb(past)'].append(past)
-    results['%verb(past)'].append(round(100 / verbs * past if verbs > 0 else 0, 2))
-    # results['verb(fut)'].append(future)
-    results['%verb(fut)'].append(round(100 / verbs * future if verbs > 0 else 0, 2))
-
-# Получаем статистику для первых 10 файлов (можно изменить)
-for num, file_name in enumerate(files[:10]):
-    # Открываем файл в бинарном режиме только для чтения
-    with open(directory + '/' + file_name, 'rb') as file:
-        # Извлекаем текст в виде строки из pdf-файла
-        text = get_text(file)
-        # Убираем цитирования и при необходимости восстанавливаем постановку пробелов
-        text1 = re.sub(r"\s\[.*?]", "", text)
-        clear_text = re.sub(r"([а-я\)])([\.\?\!]{1})([А-Я])", r"\1\2 \3", text1)
-    if clear_text != "":
-        # Для каждого слова в каждом предложении получаем слова с UD-разметкой
-        text_UD = get_UDs(clear_text)
-        # Выводим результат для каждого предложения
-        print(process_morphology(file_name, clear_text))
-        print(readability(clear_text), impersonal_sentences(text_UD), compound_complex(text_UD), introductory_words(text_UD), participal_phrases(text_UD))
-        neut, femn, masc, nouns, sg, pl, pres, past, future, verbs = get_grammar(text)
-        get_result(neut, femn, masc, nouns, sg, pl, pres, past, future, verbs, "scientific text " + str(num))
-
-print(grammar_nouns)
-print(grammar_verbs)
+# Таблицы
+#print(grammar_nouns)
+#print(grammar_verbs)
+#print(syntax_impersonal)
+#print(syntax_compound_complex)

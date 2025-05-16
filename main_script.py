@@ -7,6 +7,8 @@ from syntax_from_sentence import compound_complex
 from syntax_from_sentence import introductory_words
 from syntax_from_sentence import participal_phrases
 from readability_index import readability
+from grammar_from_text import get_grammar
+
 import os
 import re
 

@@ -1,10 +1,11 @@
-import pymorphy2
+import pymorphy3
 import re
+
+morph = pymorphy3.MorphAnalyzer()
 
 def get_grammar(text):
     # Делим текст на слова
     words = re.findall(r'[а-яА-ЯёЁa-zA-Z]+', text)
-    morph = pymorphy2.MorphAnalyzer()
     neut = femn = masc = nouns = sg = pl = pres = past = future = verbs = 0
 
     for word in words:

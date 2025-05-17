@@ -45,11 +45,6 @@ def impersonal_sentences(text):
             personal += 1
         else:
             impersonal += 1
-    #result = {
-    #    'Personal sentences' : personal,
-    #    'Impersonal sentences' : impersonal
-    #}
-    #return result
     return personal, impersonal
 
 # Подсчитываем простые предложения, различные типы сложных предложений в тексте
@@ -69,13 +64,6 @@ def compound_complex(text):
             compound_sent += 1
         else:
             simple_sent += 1
-    result = {
-        'True compound sentences' : true_compound,
-        'Complex sentences' : complex_sent,
-        'Compound sentences' : compound_sent,
-        'Simple sentences': simple_sent
-    }
-    #return result
     return true_compound, complex_sent, compound_sent, simple_sent
 
 # Подсчитываем предложения с вводными конструкциями и без них
@@ -90,10 +78,6 @@ def introductory_words(text):
             sent_with_intr_words += 1
         else:
             sent_without_intr_words += 1
-    #result = {
-    #    'Sentences with introductory words' : sent_with_intr_words,
-    #    'Sentences without introductory words' : sent_without_intr_words
-    #}
     return sent_with_intr_words, sent_without_intr_words
 
 # Подсчитываем предложения с причастными и деепричастными оборотами и без них
@@ -111,9 +95,4 @@ def participal_phrases(text):
             participal_phrase += 1
         if 'advcl' not in tags and 'amod' not in tags:
             no_phrases += 1
-    #result = {
-    #    'Sentences with participal phrases' : participal_phrase,
-    #    'Sentences with verbal adverb phrases' : adverb_phrase,
-    #    'Sentences without participal phrases': no_phrases
-    #}
     return participal_phrase, adverb_phrase, no_phrases

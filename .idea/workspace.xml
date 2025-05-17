@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aa72fc2a-2ff8-47ec-82db-bc49048cde1b" name="Changes" comment="Считает индекс читабельности">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="aa72fc2a-2ff8-47ec-82db-bc49048cde1b" name="Changes" comment="Уточнено деление на предложения">
+      <change afterPath="$PROJECT_DIR$/grammar_analysis.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/morphology_analysis.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main_script.py" beforeDir="false" afterPath="$PROJECT_DIR$/main_script.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pdf_from_nsu_vestnik.py" beforeDir="false" afterPath="$PROJECT_DIR$/pdf_from_nsu_vestnik.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readability_index.py" beforeDir="false" afterPath="$PROJECT_DIR$/readability_index.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,7 +68,7 @@
       <recent name="C:\Workspace\MyPyCharmProjects\ScientificStyle" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.readability_index">
+  <component name="RunManager" selected="Python.main_script">
     <configuration name="main_script" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="ScientificStyle" />
       <option name="ENV_FILES" value="" />
@@ -182,8 +181,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.readability_index" />
         <item itemvalue="Python.main_script" />
+        <item itemvalue="Python.readability_index" />
         <item itemvalue="Python.new_file" />
         <item itemvalue="Python.text_from_pdf" />
         <item itemvalue="Python.syntax_from_sentence" />
@@ -269,7 +268,15 @@
       <option name="project" value="LOCAL" />
       <updated>1746944674406</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Уточнено деление на предложения">
+      <option name="closed" value="true" />
+      <created>1747228480944</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1747228480944</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -280,6 +287,7 @@
     <MESSAGE value="Считает безличные, сложные и простые предложения, их типы, предложения с вводными конструкциями" />
     <MESSAGE value="Считает причастные и деепричастные обороты" />
     <MESSAGE value="Считает индекс читабельности" />
-    <option name="LAST_COMMIT_MESSAGE" value="Считает индекс читабельности" />
+    <MESSAGE value="Уточнено деление на предложения" />
+    <option name="LAST_COMMIT_MESSAGE" value="Уточнено деление на предложения" />
   </component>
 </project>

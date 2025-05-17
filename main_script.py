@@ -1,17 +1,14 @@
 from pdf_from_nsu_vestnik import pdf_url_from_vestnik
 from pdf_from_nsu_vestnik import pdf_from_link
 from text_from_pdf import get_text
-from morphology_analysis import process_morphology
 from syntax_from_sentence import get_UDs
 from syntax_from_sentence import impersonal_sentences
 from syntax_from_sentence import compound_complex
 from syntax_from_sentence import introductory_words
 from syntax_from_sentence import participal_phrases
 from readability_index import readability
-
 from grammar_from_text import get_grammar
 import pandas as pd
-
 import os
 import re
 
@@ -28,66 +25,69 @@ files = os.listdir(directory)
 
 # Инициализация структуры для результатов
 results = {
-        'text': [], 'nouns': [], '%neut': [],
-        #'neut': [],'femn': [], 'masc': [],
-        '%femn': [], '%masc': [],
+        'text': [], 'nouns': [],
+        '%neut': [], '%femn': [], '%masc': [],
         '%sing': [], '%plur': [], 'verbs': [],
-        #'verb(pres)': [], 'verb(past)': [], 'verb(fut)': [],
-        '%verb(pres)': [], '%verb(past)': [], '%verb(fut)': []
+        '%verb(pres)': [], '%verb(past)': [], '%verb(fut)': [],
+        'nouns/verbs':[]
         }
+
 results_syntax = {
-        'text': [],
-        'personal': [],
-        'impersonal': [],
-        
-        'compound': [],
-        'true_compound': [],
-        'complex': [],
-        'simple': [],
+    'text': [],
+    'personal': [],
+    'impersonal': [],
 
-        'sent with intr words': [],
-        'sent without intr words': [],
+    'compound': [],
+    'true_compound': [],
+    'complex': [],
+    'simple': [],
 
-        'participal phrase': [],
-        'adverb phrase': [],
-        'no phrases': []
-        }
+    'sent with intr words': [],
+    'sent without intr words': [],
+
+    'participal phrase': [],
+    'adverb phrase': [],
+    'no phrases': []
+}
 
 def get_result_grammar(neut, femn, masc, nouns, sg, pl, pres, past, future, verbs, file):
     results['text'].append(file)
     results['nouns'].append(nouns)
-    #results['neut'].append(neut)
+
     results['%neut'].append(round(100 / nouns * neut if nouns > 0 else 0, 2))
-    #results['femn'].append(femn)
     results['%femn'].append(round(100 / nouns * femn if nouns > 0 else 0, 2))
-    #results['masc'].append(masc)
     results['%masc'].append(round(100 / nouns * masc if nouns > 0 else 0, 2))
     results['%sing'].append(round(100 / nouns * sg if nouns > 0 else 0, 2))
     results['%plur'].append(round(100 / nouns * pl if nouns > 0 else 0, 2))
     results['verbs'].append(verbs)
-    # results['verb(pres)'].append(pres)
-    results['%verb(pres)'].append(round(100 / verbs * pres if verbs > 0 else 0, 2))
-    # results['verb(past)'].append(past)
-    results['%verb(past)'].append(round(100 / verbs * past if verbs > 0 else 0, 2))
-    # results['verb(fut)'].append(future)
-    results['%verb(fut)'].append(round(100 / verbs * future if verbs > 0 else 0, 2))
 
-def get_result_syntax(personal, impersonal, compound_sent, true_compound, complex_sent, simple_sent, file):
+    results['%verb(pres)'].append(round(100 / verbs * pres if verbs > 0 else 0, 2))
+    results['%verb(past)'].append(round(100 / verbs * past if verbs > 0 else 0, 2))
+    results['%verb(fut)'].append(round(100 / verbs * future if verbs > 0 else 0, 2))
+    results['nouns/verbs'].append(round(nouns / verbs, 2))
+
+def get_result_syntax(file, personal, impersonal, compound_sent, true_compound, complex_sent, simple_sent, \
+                      sent_with_intr_words, sent_without_intr_words, participal_phrase, adverb_phrase, no_phrases):
     results_syntax['text'].append(file)
-    results_syntax['personal'].append(personal)
-    results_syntax['impersonal'].append(impersonal)
-        
-    results_syntax['compound'].append(compound_sent)
-    results_syntax['true_compound'].append(true_compound)
-    results_syntax['complex'].append(complex_sent)
-    results_syntax['simple'].append(simple_sent)
-        
-    results_syntax['sent with intr words'].append(sent_with_intr_words)
-    results_syntax['sent without intr words'].append(sent_without_intr_words)
-    results_syntax['participal phrase'].append(participal_phrase)
-    results_syntax['adverb phrase'].append(adverb_phrase)
-    results_syntax['no phrases'].append(no_phrases)    
-                
+    total = personal + impersonal
+    results_syntax['personal'].append(round(100 / total * personal if total > 0 else 0, 2))
+    results_syntax['impersonal'].append(round(100 / total * impersonal if total > 0 else 0, 2))
+    results_syntax['compound'].append(round(100 / total * (compound_sent + true_compound + complex_sent) if total > 0 else 0, 2))
+    results_syntax['true_compound'].append(round(100 / total * true_compound if total > 0 else 0, 2))
+    results_syntax['complex'].append(round(100 / total * complex_sent if total > 0 else 0, 2))
+    results_syntax['simple'].append(round(100 / total * simple_sent if total > 0 else 0, 2))
+
+    # results_syntax['sent with intr words'].append(sent_with_intr_words)
+    # results_syntax['sent without intr words'].append(sent_without_intr_words)
+    # results_syntax['participal phrase'].append(participal_phrase)
+    # results_syntax['adverb phrase'].append(adverb_phrase)
+    # results_syntax['no phrases'].append(no_phrases)
+
+    results_syntax['sent with intr words'].append(round(100 / total * sent_with_intr_words if total > 0 else 0, 2))
+    results_syntax['sent without intr words'].append(round(100 / total * sent_without_intr_words if total > 0 else 0, 2))
+    results_syntax['participal phrase'].append(round(100 / total * participal_phrase if total > 0 else 0, 2))
+    results_syntax['adverb phrase'].append(round(100 / total * adverb_phrase if total > 0 else 0, 2))
+    results_syntax['no phrases'].append(round(100 / total * no_phrases if total > 0 else 0, 2))
 
 # Получаем статистику для первых 10 файлов (можно изменить)
 for num, file_name in enumerate(files[:10]):
@@ -101,70 +101,83 @@ for num, file_name in enumerate(files[:10]):
     if clear_text != "":
         # Для каждого слова в каждом предложении получаем слова с UD-разметкой
         text_UD = get_UDs(clear_text)
-        # Выводим результат для каждого предложения
-        print(process_morphology(file_name, clear_text))
-        print(readability(clear_text), impersonal_sentences(text_UD), compound_complex(text_UD), introductory_words(text_UD), participal_phrases(text_UD))
-        
+
         neut, femn, masc, nouns, sg, pl, pres, past, future, verbs = get_grammar(text)
         get_result_grammar(neut, femn, masc, nouns, sg, pl, pres, past, future, verbs, "scientific text " + str(num))
 
         personal, impersonal = impersonal_sentences(text_UD)
-        compound_sent, true_compound, complex_sent, simple_sent = compound_complex(text_UD)
+        true_compound, complex_sent, compound_sent, simple_sent = compound_complex(text_UD)
         sent_with_intr_words, sent_without_intr_words = introductory_words(text_UD)
-        participal_phrase, adverb_phrase, no_phrases = participal_phrases(text_UD)    
+        participal_phrase, adverb_phrase, no_phrases = participal_phrases(text_UD)
+        get_result_syntax("scientific text " + str(num + 1), personal, impersonal, \
+                          compound_sent, true_compound, complex_sent, simple_sent, \
+                          sent_with_intr_words, sent_without_intr_words, participal_phrase, adverb_phrase, no_phrases)
 
-        get_result_syntax(personal, impersonal, compound_sent, true_compound, complex_sent, simple_sent, sent_with_intr_words, sent_without_intr_words, participal_phrase, adverb_phrase, no_phrases, "scientific text " + str(num))
-        
-grammar_nouns = pd.DataFrame({
+grammar_gender = pd.DataFrame({
         'text': results['text'],
-        'nouns': results['nouns'],
-        #'neut': results['neut'],
-        '%neut': results['%neut'],
-        #'femn': results['femn'],
-        '%femn': results['%femn'],
-        #'masc': results['masc'],
-        '%masc': results['%masc'],
-        '%sing': results['%sing'],
-        '%plur': results['%plur']
+        'neutral, %': results['%neut'],
+        'feminine, %': results['%femn'],
+        'masculine, %': results['%masc'],
     })
+
+grammar_number = pd.DataFrame({
+        'text': results['text'],
+        'singular, %': results['%sing'],
+        'plural, %': results['%plur'],
+    })
+
 grammar_verbs = pd.DataFrame({
         'text': results['text'],
-        'verbs': results['verbs'],
-        #'verb(pres)': results['verb(pres)'],
-        '%verb(pres)': results['%verb(pres)'],
-        #'verb(past)': results['verb(past)'],
-        '%verb(past)': results['%verb(past)'],
-        #'verb(fut)': results['verb(fut)'],
-        '%verb(fut)': results['%verb(fut)']
+        'present, %': results['%verb(pres)'],
+        'past, %': results['%verb(past)'],
+        'future, %': results['%verb(fut)']
         })
+
+grammar_POS = pd.DataFrame({
+        'text': results['text'],
+        'nouns': results['nouns'],
+        'verbs': results['verbs'],
+        'nouns/verbs': results['nouns/verbs']
+        })
+
 syntax_impersonal = pd.DataFrame({
         'text': results_syntax['text'],
-        'personal': results_syntax['personal'],
-        'impersonal': results_syntax['impersonal']
+        'personal, %': results_syntax['personal'],
+        'impersonal, %': results_syntax['impersonal']
         })
+
+syntax_simple_compound = pd.DataFrame({
+        'text': results_syntax['text'],
+        'compound, %': results_syntax['compound'],
+        'simple, %': results_syntax['simple'],
+        })
+
 syntax_compound_complex = pd.DataFrame({
         'text': results_syntax['text'],
-        'compound': results_syntax['compound'],
-        'true_compound': results_syntax['true_compound'],
-        'complex': results_syntax['complex'],
-        'simple': results_syntax['simple'],
+        'compound, %': results_syntax['true_compound'],
+        'complex, %': results_syntax['complex']
         })
+
 syntax_introductory_words = pd.DataFrame({
         'text': results_syntax['text'],
-        'sent with intr words': results_syntax['sent with intr words'],
-        'sent without intr words': results_syntax['sent without intr words'],
+        'Introductory words, %': results_syntax['sent with intr words'],
+        'No introductory words, %': results_syntax['sent without intr words'],
         })
+
 syntax_participal_phrases = pd.DataFrame({
         'text': results_syntax['text'],
-        'participal phrase': results_syntax['participal phrase'],
-        'adverb phrase': results_syntax['adverb phrase'],
-        'no phrases': results_syntax['no phrases'],
+        'Participal phrases, %': results_syntax['participal phrase'],
+        'Adverb phrases, %': results_syntax['adverb phrase'],
+        'No phrases, %': results_syntax['no phrases'],
         })
 
 # Таблицы
-#print(grammar_nouns)
-#print(grammar_verbs)
-#print(syntax_impersonal)
-#print(syntax_compound_complex)
-#print(syntax_introductory_words)
-#print(syntax_participal_phrases)
+print(grammar_gender)
+print(grammar_number)
+print(grammar_verbs)
+print(grammar_POS)
+print(syntax_impersonal)
+print(syntax_simple_compound)
+print(syntax_compound_complex)
+print(syntax_introductory_words)
+print(syntax_participal_phrases)

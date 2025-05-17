@@ -39,10 +39,18 @@ results_syntax = {
         'text': [],
         'personal': [],
         'impersonal': [],
+        
         'compound': [],
         'true_compound': [],
         'complex': [],
-        'simple': []
+        'simple': [],
+
+        'sent with intr words': [],
+        'sent without intr words': [],
+
+        'participal phrase': [],
+        'adverb phrase': [],
+        'no phrases': []
         }
 
 def get_result_grammar(neut, femn, masc, nouns, sg, pl, pres, past, future, verbs, file):
@@ -68,10 +76,18 @@ def get_result_syntax(personal, impersonal, compound_sent, true_compound, comple
     results_syntax['text'].append(file)
     results_syntax['personal'].append(personal)
     results_syntax['impersonal'].append(impersonal)
+        
     results_syntax['compound'].append(compound_sent)
     results_syntax['true_compound'].append(true_compound)
     results_syntax['complex'].append(complex_sent)
     results_syntax['simple'].append(simple_sent)
+        
+    results_syntax['sent with intr words'].append(sent_with_intr_words)
+    results_syntax['sent without intr words'].append(sent_without_intr_words)
+    results_syntax['participal phrase'].append(participal_phrase)
+    results_syntax['adverb phrase'].append(adverb_phrase)
+    results_syntax['no phrases'].append(no_phrases)    
+                
 
 # Получаем статистику для первых 10 файлов (можно изменить)
 for num, file_name in enumerate(files[:10]):
@@ -94,8 +110,11 @@ for num, file_name in enumerate(files[:10]):
 
         personal, impersonal = impersonal_sentences(text_UD)
         compound_sent, true_compound, complex_sent, simple_sent = compound_complex(text_UD)
-        get_result_syntax(personal, impersonal, compound_sent, true_compound, complex_sent, simple_sent, "scientific text " + str(num))
+        sent_with_intr_words, sent_without_intr_words = introductory_words(text_UD)
+        participal_phrase, adverb_phrase, no_phrases = participal_phrases(text_UD)    
 
+        get_result_syntax(personal, impersonal, compound_sent, true_compound, complex_sent, simple_sent, sent_with_intr_words, sent_without_intr_words, participal_phrase, adverb_phrase, no_phrases, "scientific text " + str(num))
+        
 grammar_nouns = pd.DataFrame({
         'text': results['text'],
         'nouns': results['nouns'],
@@ -130,9 +149,22 @@ syntax_compound_complex = pd.DataFrame({
         'complex': results_syntax['complex'],
         'simple': results_syntax['simple'],
         })
+syntax_introductory_words = pd.DataFrame({
+        'text': results_syntax['text'],
+        'sent with intr words': results_syntax['sent with intr words'],
+        'sent without intr words': results_syntax['sent without intr words'],
+        })
+syntax_participal_phrases = pd.DataFrame({
+        'text': results_syntax['text'],
+        'participal phrase': results_syntax['participal phrase'],
+        'adverb phrase': results_syntax['adverb phrase'],
+        'no phrases': results_syntax['no phrases'],
+        })
 
 # Таблицы
 #print(grammar_nouns)
 #print(grammar_verbs)
 #print(syntax_impersonal)
 #print(syntax_compound_complex)
+#print(syntax_introductory_words)
+#print(syntax_participal_phrases)

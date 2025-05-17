@@ -15,7 +15,7 @@ import re
 # Указываем путь к директории
 directory = "C:/Workspace/MyPyCharmProjects/ScientificStyle/Articles"
 # Указываем путь к директории (худ. тексты)
-prose_directory ='C:\project2025\ProseStyle'
+prose_directory =''
 
 # # Находим на сайте Вестника НГУ ссылки на pdf-файлы с научными статьями с 2007 до указанного года
 # for link in pdf_url_from_vestnik(2008):  # Для 2007 и 2008 годов все работает

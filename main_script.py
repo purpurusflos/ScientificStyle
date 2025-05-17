@@ -14,6 +14,8 @@ import re
 
 # Указываем путь к директории
 directory = "C:/Workspace/MyPyCharmProjects/ScientificStyle/Articles"
+# Указываем путь к директории (худ. тексты)
+prose_directory ='C:\project2025\ProseStyle'
 
 # # Находим на сайте Вестника НГУ ссылки на pdf-файлы с научными статьями с 2007 до указанного года
 # for link in pdf_url_from_vestnik(2008):  # Для 2007 и 2008 годов все работает
@@ -22,6 +24,7 @@ directory = "C:/Workspace/MyPyCharmProjects/ScientificStyle/Articles"
 
 # Получаем список файлов
 files = os.listdir(directory)
+prose_files = os.listdir(directory_prose)
 
 # Инициализация структуры для результатов
 results = {
@@ -112,6 +115,23 @@ for num, file_name in enumerate(files[:10]):
         get_result_syntax("scientific text " + str(num + 1), personal, impersonal, \
                           compound_sent, true_compound, complex_sent, simple_sent, \
                           sent_with_intr_words, sent_without_intr_words, participal_phrase, adverb_phrase, no_phrases)
+
+# Художественные тексты
+for num, file_name in enumerate(prose_files[:5]):
+    # Открываем файл в бинарном режиме только для чтения
+    with open(prose_directory + '/' + file_name, encoding='utf-8') as file:
+        # Извлекаем текст в виде строки из pdf-файла
+        text = file.read()
+        text_UD = get_UDs(text)
+        neut, femn, masc, nouns, sg, pl, pres, past, future, verbs = get_grammar(text)
+        get_result_grammar(neut, femn, masc, nouns, sg, pl, pres, past, future, verbs, "prose text " + str(num))
+        #print(readability(clear_text))
+        personal, impersonal = impersonal_sentences(text_UD)
+        compound_sent, true_compound, complex_sent, simple_sent = compound_complex(text_UD)
+        sent_with_intr_words, sent_without_intr_words = introductory_words(text_UD)
+        participal_phrase, adverb_phrase, no_phrases = participal_phrases(text_UD)
+        get_result_syntax(personal, impersonal, compound_sent, true_compound, complex_sent, simple_sent, sent_with_intr_words, sent_without_intr_words, participal_phrase, adverb_phrase, no_phrases, "scientific text " + str(num))
+
 
 grammar_gender = pd.DataFrame({
         'text': results['text'],

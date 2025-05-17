@@ -76,7 +76,7 @@ def compound_complex(text):
         'Simple sentences': simple_sent
     }
     #return result
-    return result
+    return true_compound, complex_sent, compound_sent, simple_sent
 
 # Подсчитываем предложения с вводными конструкциями и без них
 def introductory_words(text):
@@ -90,11 +90,11 @@ def introductory_words(text):
             sent_with_intr_words += 1
         else:
             sent_without_intr_words += 1
-    result = {
-        'Sentences with introductory words' : sent_with_intr_words,
-        'Sentences without introductory words' : sent_without_intr_words
-    }
-    return true_compound, complex_sent, compound_sent, simple_sent
+    #result = {
+    #    'Sentences with introductory words' : sent_with_intr_words,
+    #    'Sentences without introductory words' : sent_without_intr_words
+    #}
+    return sent_with_intr_words, sent_without_intr_words
 
 # Подсчитываем предложения с причастными и деепричастными оборотами и без них
 def participal_phrases(text):
@@ -111,9 +111,9 @@ def participal_phrases(text):
             participal_phrase += 1
         if 'advcl' not in tags and 'amod' not in tags:
             no_phrases += 1
-    result = {
-        'Sentences with participal phrases' : participal_phrase,
-        'Sentences with verbal adverb phrases' : adverb_phrase,
-        'Sentences without participal phrases': no_phrases
-    }
-    return result
+    #result = {
+    #    'Sentences with participal phrases' : participal_phrase,
+    #    'Sentences with verbal adverb phrases' : adverb_phrase,
+    #    'Sentences without participal phrases': no_phrases
+    #}
+    return participal_phrase, adverb_phrase, no_phrases

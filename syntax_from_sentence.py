@@ -45,10 +45,10 @@ def impersonal_sentences(text):
             personal += 1
         else:
             impersonal += 1
-    result = {
-        'Personal sentences' : personal,
-        'Impersonal sentences' : impersonal
-    }
+    #result = {
+    #    'Personal sentences' : personal,
+    #    'Impersonal sentences' : impersonal
+    #}
     #return result
     return personal, impersonal
 

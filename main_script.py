@@ -156,7 +156,7 @@ for num, file_name in enumerate(prose_files[:10]):
                           compound_sent, true_compound, complex_sent, simple_sent, \
                           sent_with_intr_words, sent_without_intr_words, participal_phrase, adverb_phrase, no_phrases)
 
-        average_sentence_length, average_number_of_syllables, index = readability(clear_text)
+        average_sentence_length, average_number_of_syllables, index = readability(text)
         get_result_index(average_sentence_length, average_number_of_syllables, index, "prose text " + str(num + 1))
 
 

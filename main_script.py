@@ -14,6 +14,8 @@ import re
 
 # Указываем путь к директории
 directory = "C:/Workspace/MyPyCharmProjects/ScientificStyle/Articles"
+# Указываем путь к директории (худ. тексты)
+prose_directory ='C:/Workspace/MyPyCharmProjects/ScientificStyle/Prose'
 
 # # Находим на сайте Вестника НГУ ссылки на pdf-файлы с научными статьями с 2007 до указанного года
 # for link in pdf_url_from_vestnik(2008):  # Для 2007 и 2008 годов все работает
@@ -22,6 +24,7 @@ directory = "C:/Workspace/MyPyCharmProjects/ScientificStyle/Articles"
 
 # Получаем список файлов
 files = os.listdir(directory)
+prose_files = os.listdir(prose_directory)
 
 # Инициализация структуры для результатов
 results = {
@@ -48,6 +51,13 @@ results_syntax = {
     'participal phrase': [],
     'adverb phrase': [],
     'no phrases': []
+}
+
+results_index = {
+        'text': [],
+        'average sentence length': [],
+        'average number of syllables': [],
+        'index': []
 }
 
 def get_result_grammar(neut, femn, masc, nouns, sg, pl, pres, past, future, verbs, file):
@@ -77,20 +87,31 @@ def get_result_syntax(file, personal, impersonal, compound_sent, true_compound, 
     results_syntax['complex'].append(round(100 / total * complex_sent if total > 0 else 0, 2))
     results_syntax['simple'].append(round(100 / total * simple_sent if total > 0 else 0, 2))
 
-    # results_syntax['sent with intr words'].append(sent_with_intr_words)
-    # results_syntax['sent without intr words'].append(sent_without_intr_words)
-    # results_syntax['participal phrase'].append(participal_phrase)
-    # results_syntax['adverb phrase'].append(adverb_phrase)
-    # results_syntax['no phrases'].append(no_phrases)
-
     results_syntax['sent with intr words'].append(round(100 / total * sent_with_intr_words if total > 0 else 0, 2))
     results_syntax['sent without intr words'].append(round(100 / total * sent_without_intr_words if total > 0 else 0, 2))
     results_syntax['participal phrase'].append(round(100 / total * participal_phrase if total > 0 else 0, 2))
     results_syntax['adverb phrase'].append(round(100 / total * adverb_phrase if total > 0 else 0, 2))
     results_syntax['no phrases'].append(round(100 / total * no_phrases if total > 0 else 0, 2))
 
+def get_result_index(average_sentence_length, average_number_of_syllables, index, file):
+    results_index['text'].append(file)
+    results_index['average sentence length'].append(round(average_sentence_length, 2))
+    results_index['average number of syllables'].append(round(average_number_of_syllables, 2))
+    results_index['index'].append(round(index, 2))
+
+average = ["a621a129b1a4dcd408f350808286f081.pdf",
+           "ee9e6f31d702584e354a81ffa8547ef2.pdf", \
+           "232605f541d931e034b6271963bf52d3.pdf", \
+           "9eecf541a6d5c79a0d043ed546326679.pdf", \
+           "dbfd8e46c680a0562021664689beccd6.pdf", \
+           "bc59e553aafa67549c9e42f61f573383.pdf", \
+           "df1315441c3f2f5b3c6de9aae2067e55.pdf", \
+           "de41992d630662c2a9ed66584af3f7ce.pdf", \
+           "dd3813413f41b24b70428223eebefa22.pdf", \
+           "016798dea64580a1b8503dd60efbaf5c.pdf"]
+
 # Получаем статистику для первых 10 файлов (можно изменить)
-for num, file_name in enumerate(files[:10]):
+for num, file_name in enumerate(average):
     # Открываем файл в бинарном режиме только для чтения
     with open(directory + '/' + file_name, 'rb') as file:
         # Извлекаем текст в виде строки из pdf-файла
@@ -103,7 +124,7 @@ for num, file_name in enumerate(files[:10]):
         text_UD = get_UDs(clear_text)
 
         neut, femn, masc, nouns, sg, pl, pres, past, future, verbs = get_grammar(text)
-        get_result_grammar(neut, femn, masc, nouns, sg, pl, pres, past, future, verbs, "scientific text " + str(num))
+        get_result_grammar(neut, femn, masc, nouns, sg, pl, pres, past, future, verbs, "scientific text " + str(num + 1))
 
         personal, impersonal = impersonal_sentences(text_UD)
         true_compound, complex_sent, compound_sent, simple_sent = compound_complex(text_UD)
@@ -112,6 +133,32 @@ for num, file_name in enumerate(files[:10]):
         get_result_syntax("scientific text " + str(num + 1), personal, impersonal, \
                           compound_sent, true_compound, complex_sent, simple_sent, \
                           sent_with_intr_words, sent_without_intr_words, participal_phrase, adverb_phrase, no_phrases)
+
+        average_sentence_length, average_number_of_syllables, index = readability(clear_text)
+        get_result_index(average_sentence_length, average_number_of_syllables, index, "scientific text " + str(num + 1))
+
+# Художественные тексты
+for num, file_name in enumerate(prose_files[:10]):
+    # Открываем файл в бинарном режиме только для чтения
+    with open(prose_directory + '/' + file_name, encoding='utf-8') as file:
+        # Извлекаем текст в виде строки из pdf-файла
+        text = file.read()
+        text_UD = get_UDs(text)
+
+        neut, femn, masc, nouns, sg, pl, pres, past, future, verbs = get_grammar(text)
+        get_result_grammar(neut, femn, masc, nouns, sg, pl, pres, past, future, verbs, "prose text " + str(num + 1))
+
+        personal, impersonal = impersonal_sentences(text_UD)
+        true_compound, complex_sent, compound_sent, simple_sent = compound_complex(text_UD)
+        sent_with_intr_words, sent_without_intr_words = introductory_words(text_UD)
+        participal_phrase, adverb_phrase, no_phrases = participal_phrases(text_UD)
+        get_result_syntax("prose text " + str(num + 1), personal, impersonal, \
+                          compound_sent, true_compound, complex_sent, simple_sent, \
+                          sent_with_intr_words, sent_without_intr_words, participal_phrase, adverb_phrase, no_phrases)
+
+        average_sentence_length, average_number_of_syllables, index = readability(clear_text)
+        get_result_index(average_sentence_length, average_number_of_syllables, index, "prose text " + str(num + 1))
+
 
 grammar_gender = pd.DataFrame({
         'text': results['text'],
@@ -171,6 +218,13 @@ syntax_participal_phrases = pd.DataFrame({
         'No phrases, %': results_syntax['no phrases'],
         })
 
+index = pd.DataFrame({
+        'text': results_index['text'],
+        'av. sent. length': results_index['average sentence length'],
+        'av. num. of syllables': results_index['average number of syllables'],
+        'index': results_index['index'],
+        })
+
 # Таблицы
 print(grammar_gender)
 print(grammar_number)
@@ -181,3 +235,4 @@ print(syntax_simple_compound)
 print(syntax_compound_complex)
 print(syntax_introductory_words)
 print(syntax_participal_phrases)
+print(index)

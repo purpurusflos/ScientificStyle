@@ -43,4 +43,4 @@ def readability(text):
     # Считаем индекс читабельности для русского языка по формуле Флеша
     # 206,836 – (1,52 × средняя длина предложения) – (65,14 × среднее число слогов)
     index = 206.836 - (1.52 * ave_length(sentences)) - (65.14 * ave_syllable(sent_tokens))
-    return index
+    return ave_length(sentences), ave_syllable(sent_tokens), index

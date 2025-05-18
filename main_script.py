@@ -53,6 +53,13 @@ results_syntax = {
     'no phrases': []
 }
 
+results_index = {
+        'text': [],
+        'average sentence length': [],
+        'average number of syllables': [],
+        'index': []
+}
+
 def get_result_grammar(neut, femn, masc, nouns, sg, pl, pres, past, future, verbs, file):
     results['text'].append(file)
     results['nouns'].append(nouns)
@@ -92,6 +99,12 @@ def get_result_syntax(file, personal, impersonal, compound_sent, true_compound, 
     results_syntax['adverb phrase'].append(round(100 / total * adverb_phrase if total > 0 else 0, 2))
     results_syntax['no phrases'].append(round(100 / total * no_phrases if total > 0 else 0, 2))
 
+def get_result_index(average_sentence_length, average_number_of_syllables, index, file):
+    results_index['text'].append(file)
+    results_index['average sentence length'].append(round(average_sentence_length, 2))
+    results_index['average number of syllables'].append(round(average_number_of_syllables, 2))
+    results_index['index'].append(round(index, 2))
+
 # Получаем статистику для первых 10 файлов (можно изменить)
 for num, file_name in enumerate(files[:10]):
     # Открываем файл в бинарном режиме только для чтения
@@ -115,6 +128,9 @@ for num, file_name in enumerate(files[:10]):
         get_result_syntax("scientific text " + str(num + 1), personal, impersonal, \
                           compound_sent, true_compound, complex_sent, simple_sent, \
                           sent_with_intr_words, sent_without_intr_words, participal_phrase, adverb_phrase, no_phrases)
+
+        average_sentence_length, average_number_of_syllables, index = readability(clear_text)
+        get_result_index(average_sentence_length, average_number_of_syllables, index, "scientific text " + str(num))
 
 # Художественные тексты
 for num, file_name in enumerate(prose_files[:10]):
@@ -191,6 +207,13 @@ syntax_participal_phrases = pd.DataFrame({
         'No phrases, %': results_syntax['no phrases'],
         })
 
+index = pd.DataFrame({
+        'text': results_index['text'],
+        'av. sent. length': results_index['average sentence length'],
+        'av. num. of syllables': results_index['average number of syllables'],
+        'index': results_index['index'],
+        })
+
 # Таблицы
 print(grammar_gender)
 print(grammar_number)
@@ -201,3 +224,4 @@ print(syntax_simple_compound)
 print(syntax_compound_complex)
 print(syntax_introductory_words)
 print(syntax_participal_phrases)
+print(index)

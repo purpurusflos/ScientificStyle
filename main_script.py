@@ -117,7 +117,7 @@ for num, file_name in enumerate(files[:10]):
                           sent_with_intr_words, sent_without_intr_words, participal_phrase, adverb_phrase, no_phrases)
 
 # Художественные тексты
-for num, file_name in enumerate(prose_files[:5]):
+for num, file_name in enumerate(prose_files[:10]):
     # Открываем файл в бинарном режиме только для чтения
     with open(prose_directory + '/' + file_name, encoding='utf-8') as file:
         # Извлекаем текст в виде строки из pdf-файла

@@ -44,4 +44,5 @@ def pdf_url_from_vestnik(year):
                                 # Проверяем, что скачиваемый файл - именно pdf
                                 if pdf_url[-3:] == "pdf":
                                     pdf_links.append(pdf_url)
+    # Возвращает список ссылок
     return pdf_links

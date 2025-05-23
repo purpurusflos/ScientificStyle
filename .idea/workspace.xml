@@ -4,10 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aa72fc2a-2ff8-47ec-82db-bc49048cde1b" name="Changes" comment="Уточнено деление на предложения">
-      <change afterPath="$PROJECT_DIR$/grammar_analysis.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/morphology_analysis.py" afterDir="false" />
+    <list default="true" id="aa72fc2a-2ff8-47ec-82db-bc49048cde1b" name="Changes" comment="Считается индекс читабельности для художки">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/grammar_from_text.py" beforeDir="false" afterPath="$PROJECT_DIR$/grammar_from_text.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main_script.py" beforeDir="false" afterPath="$PROJECT_DIR$/main_script.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pdf_from_nsu_vestnik.py" beforeDir="false" afterPath="$PROJECT_DIR$/pdf_from_nsu_vestnik.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/readability_index.py" beforeDir="false" afterPath="$PROJECT_DIR$/readability_index.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/syntax_from_sentence.py" beforeDir="false" afterPath="$PROJECT_DIR$/syntax_from_sentence.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/text_from_pdf.py" beforeDir="false" afterPath="$PROJECT_DIR$/text_from_pdf.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,50 +26,88 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <excluded-from-favorite>
+      <branch-storage>
+        <map>
+          <entry type="LOCAL">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$" source="master" />
+              </list>
+            </value>
+          </entry>
+        </map>
+      </branch-storage>
+    </excluded-from-favorite>
+    <option name="PUSH_TAGS">
+      <GitPushTagMode>
+        <option name="argument" value="--tags" />
+        <option name="title" value="All" />
+      </GitPushTagMode>
+    </option>
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "purpurusflos"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;purpurusflos&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/purpurusflos/ScientificStyle.git",
-    "accountId": "44239a34-151c-41c0-8fd6-98da982f6d7f"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/purpurusflos/ScientificStyle.git&quot;,
+    &quot;accountId&quot;: &quot;44239a34-151c-41c0-8fd6-98da982f6d7f&quot;
   }
-}]]></component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 2
-}]]></component>
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
   <component name="ProjectId" id="2w9xr77ndfvu2tKIOzHvgPAXrHA" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "Python.copy1.executor": "Run",
-    "Python.main_script.executor": "Run",
-    "Python.my_version.executor": "Run",
-    "Python.new_file.executor": "Run",
-    "Python.pdf_from_nsu_vestnik.executor": "Run",
-    "Python.readability_index.executor": "Run",
-    "Python.skyeng.executor": "Run",
-    "Python.syntax_from_sentence.executor": "Run",
-    "Python.text_from_pdf.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "C:/Workspace/MyPyCharmProjects/ScientificStyle",
-    "settings.editor.selected.configurable": "database.data.views.appearance"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Python.copy1.executor&quot;: &quot;Run&quot;,
+    &quot;Python.main_script.executor&quot;: &quot;Run&quot;,
+    &quot;Python.my_version.executor&quot;: &quot;Run&quot;,
+    &quot;Python.new_file.executor&quot;: &quot;Run&quot;,
+    &quot;Python.pdf_from_nsu_vestnik.executor&quot;: &quot;Run&quot;,
+    &quot;Python.readability_index.executor&quot;: &quot;Run&quot;,
+    &quot;Python.skyeng.executor&quot;: &quot;Run&quot;,
+    &quot;Python.syntax_from_sentence.executor&quot;: &quot;Run&quot;,
+    &quot;Python.text_from_pdf.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Workspace/MyPyCharmProjects/ScientificStyle/Prose&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;database.data.views.appearance&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;ChangesTree.GroupingKeys&quot;: [
+      &quot;directory&quot;,
+      &quot;repository&quot;
+    ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Workspace\MyPyCharmProjects\ScientificStyle\Prose" />
+      <recent name="C:\Workspace\MyPyCharmProjects\ScientificStyle\needed" />
+      <recent name="C:\Workspace\MyPyCharmProjects\ScientificStyle\Articles" />
       <recent name="C:\Workspace\MyPyCharmProjects\ScientificStyle" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Workspace\MyPyCharmProjects\ScientificStyle" />
+      <recent name="C:\Workspace\MyPyCharmProjects\ScientificStyle\Articles" />
+      <recent name="C:\Workspace\MyPyCharmProjects\ScientificStyle\Articles\needed" />
     </key>
   </component>
   <component name="RunManager" selected="Python.main_script">
@@ -182,10 +224,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.main_script" />
-        <item itemvalue="Python.readability_index" />
         <item itemvalue="Python.new_file" />
-        <item itemvalue="Python.text_from_pdf" />
         <item itemvalue="Python.syntax_from_sentence" />
+        <item itemvalue="Python.readability_index" />
+        <item itemvalue="Python.text_from_pdf" />
       </list>
     </recent_temporary>
   </component>
@@ -276,7 +318,39 @@
       <option name="project" value="LOCAL" />
       <updated>1747228480944</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Добавлен анализ морфологии">
+      <option name="closed" value="true" />
+      <created>1747413752483</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1747413752483</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Добавлены таблицы">
+      <option name="closed" value="true" />
+      <created>1747463057547</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1747463057547</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Выборка статей">
+      <option name="closed" value="true" />
+      <created>1747560506075</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1747560506075</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Считается индекс читабельности для художки">
+      <option name="closed" value="true" />
+      <created>1747573099027</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1747573099027</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -288,6 +362,10 @@
     <MESSAGE value="Считает причастные и деепричастные обороты" />
     <MESSAGE value="Считает индекс читабельности" />
     <MESSAGE value="Уточнено деление на предложения" />
-    <option name="LAST_COMMIT_MESSAGE" value="Уточнено деление на предложения" />
+    <MESSAGE value="Добавлен анализ морфологии" />
+    <MESSAGE value="Добавлены таблицы" />
+    <MESSAGE value="Выборка статей" />
+    <MESSAGE value="Считается индекс читабельности для художки" />
+    <option name="LAST_COMMIT_MESSAGE" value="Считается индекс читабельности для художки" />
   </component>
 </project>

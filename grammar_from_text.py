@@ -3,6 +3,7 @@ import re
 
 morph = pymorphy3.MorphAnalyzer()
 
+
 def get_grammar(text):
     # Делим текст на слова
     words = re.findall(r'[а-яА-ЯёЁa-zA-Z]+', text)

@@ -17,10 +17,10 @@ directory = "C:/Workspace/MyPyCharmProjects/ScientificStyle/Articles"
 # Указываем путь к директории (худ. тексты)
 prose_directory ='C:/Workspace/MyPyCharmProjects/ScientificStyle/Prose'
 
-# # Находим на сайте Вестника НГУ ссылки на pdf-файлы с научными статьями с 2007 до указанного года
-# for link in pdf_url_from_vestnik(2008):  # Для 2007 и 2008 годов все работает
-#     # По ссылке на pdf-файл скачиваем файл в указанную папку
-#     pdf_from_link(link, directory)
+# Находим на сайте Вестника НГУ ссылки на pdf-файлы с научными статьями с 2007 до указанного года
+for link in pdf_url_from_vestnik(2008):  # Для 2007 и 2008 годов все работает
+    # По ссылке на pdf-файл скачиваем файл в указанную папку
+    pdf_from_link(link, directory)
 
 # Получаем список файлов
 files = os.listdir(directory)
@@ -51,14 +51,14 @@ results_syntax = {
     'participal phrase': [],
     'adverb phrase': [],
     'no phrases': []
-}
+    }
 
 results_index = {
         'text': [],
         'average sentence length': [],
         'average number of syllables': [],
         'index': []
-}
+        }
 
 def get_result_grammar(neut, femn, masc, nouns, sg, pl, pres, past, future, verbs, file):
     results['text'].append(file)
@@ -76,8 +76,9 @@ def get_result_grammar(neut, femn, masc, nouns, sg, pl, pres, past, future, verb
     results['%verb(fut)'].append(round(100 / verbs * future if verbs > 0 else 0, 2))
     results['nouns/verbs'].append(round(nouns / verbs, 2))
 
-def get_result_syntax(file, personal, impersonal, compound_sent, true_compound, complex_sent, simple_sent, \
-                      sent_with_intr_words, sent_without_intr_words, participal_phrase, adverb_phrase, no_phrases):
+def get_result_syntax(
+            file, personal, impersonal, compound_sent, true_compound, complex_sent, simple_sent,
+            sent_with_intr_words, sent_without_intr_words, participal_phrase, adverb_phrase, no_phrases):
     results_syntax['text'].append(file)
     total = personal + impersonal
     results_syntax['personal'].append(round(100 / total * personal if total > 0 else 0, 2))
@@ -100,14 +101,14 @@ def get_result_index(average_sentence_length, average_number_of_syllables, index
     results_index['index'].append(round(index, 2))
 
 average = ["a621a129b1a4dcd408f350808286f081.pdf",
-           "ee9e6f31d702584e354a81ffa8547ef2.pdf", \
-           "232605f541d931e034b6271963bf52d3.pdf", \
-           "9eecf541a6d5c79a0d043ed546326679.pdf", \
-           "dbfd8e46c680a0562021664689beccd6.pdf", \
-           "bc59e553aafa67549c9e42f61f573383.pdf", \
-           "df1315441c3f2f5b3c6de9aae2067e55.pdf", \
-           "de41992d630662c2a9ed66584af3f7ce.pdf", \
-           "dd3813413f41b24b70428223eebefa22.pdf", \
+           "ee9e6f31d702584e354a81ffa8547ef2.pdf",
+           "232605f541d931e034b6271963bf52d3.pdf",
+           "9eecf541a6d5c79a0d043ed546326679.pdf",
+           "dbfd8e46c680a0562021664689beccd6.pdf",
+           "bc59e553aafa67549c9e42f61f573383.pdf",
+           "df1315441c3f2f5b3c6de9aae2067e55.pdf",
+           "de41992d630662c2a9ed66584af3f7ce.pdf",
+           "dd3813413f41b24b70428223eebefa22.pdf",
            "016798dea64580a1b8503dd60efbaf5c.pdf"]
 
 # Получаем статистику для первых 10 файлов (можно изменить)
@@ -119,23 +120,23 @@ for num, file_name in enumerate(average):
         # Убираем цитирования и при необходимости восстанавливаем постановку пробелов
         text1 = re.sub(r"\s\[.*?]", "", text)
         clear_text = re.sub(r"([а-я\)])([\.\?\!]{1})([А-Я])", r"\1\2 \3", text1)
-    if clear_text != "":
-        # Для каждого слова в каждом предложении получаем слова с UD-разметкой
-        text_UD = get_UDs(clear_text)
+    # Для каждого слова в каждом предложении получаем слова с UD-разметкой
+    text_UD = get_UDs(clear_text)
 
-        neut, femn, masc, nouns, sg, pl, pres, past, future, verbs = get_grammar(text)
-        get_result_grammar(neut, femn, masc, nouns, sg, pl, pres, past, future, verbs, "scientific text " + str(num + 1))
+    neut, femn, masc, nouns, sg, pl, pres, past, future, verbs = get_grammar(text)
+    get_result_grammar(neut, femn, masc, nouns, sg, pl, pres, past, future, verbs, "scientific text " + str(num + 1))
 
-        personal, impersonal = impersonal_sentences(text_UD)
-        true_compound, complex_sent, compound_sent, simple_sent = compound_complex(text_UD)
-        sent_with_intr_words, sent_without_intr_words = introductory_words(text_UD)
-        participal_phrase, adverb_phrase, no_phrases = participal_phrases(text_UD)
-        get_result_syntax("scientific text " + str(num + 1), personal, impersonal, \
-                          compound_sent, true_compound, complex_sent, simple_sent, \
-                          sent_with_intr_words, sent_without_intr_words, participal_phrase, adverb_phrase, no_phrases)
+    personal, impersonal = impersonal_sentences(text_UD)
+    true_compound, complex_sent, compound_sent, simple_sent = compound_complex(text_UD)
+    sent_with_intr_words, sent_without_intr_words = introductory_words(text_UD)
+    participal_phrase, adverb_phrase, no_phrases = participal_phrases(text_UD)
+    get_result_syntax(
+        "scientific text " + str(num + 1), personal, impersonal,
+        compound_sent, true_compound, complex_sent, simple_sent,
+        sent_with_intr_words, sent_without_intr_words, participal_phrase, adverb_phrase, no_phrases)
 
-        average_sentence_length, average_number_of_syllables, index = readability(clear_text)
-        get_result_index(average_sentence_length, average_number_of_syllables, index, "scientific text " + str(num + 1))
+    average_sentence_length, average_number_of_syllables, index = readability(clear_text)
+    get_result_index(average_sentence_length, average_number_of_syllables, index, "scientific text " + str(num + 1))
 
 # Художественные тексты
 for num, file_name in enumerate(prose_files[:10]):
@@ -152,9 +153,10 @@ for num, file_name in enumerate(prose_files[:10]):
         true_compound, complex_sent, compound_sent, simple_sent = compound_complex(text_UD)
         sent_with_intr_words, sent_without_intr_words = introductory_words(text_UD)
         participal_phrase, adverb_phrase, no_phrases = participal_phrases(text_UD)
-        get_result_syntax("prose text " + str(num + 1), personal, impersonal, \
-                          compound_sent, true_compound, complex_sent, simple_sent, \
-                          sent_with_intr_words, sent_without_intr_words, participal_phrase, adverb_phrase, no_phrases)
+        get_result_syntax(
+            "prose text " + str(num + 1), personal, impersonal,
+            compound_sent, true_compound, complex_sent, simple_sent,
+            sent_with_intr_words, sent_without_intr_words, participal_phrase, adverb_phrase, no_phrases)
 
         average_sentence_length, average_number_of_syllables, index = readability(text)
         get_result_index(average_sentence_length, average_number_of_syllables, index, "prose text " + str(num + 1))
@@ -165,13 +167,13 @@ grammar_gender = pd.DataFrame({
         'neutral, %': results['%neut'],
         'feminine, %': results['%femn'],
         'masculine, %': results['%masc'],
-    })
+        })
 
 grammar_number = pd.DataFrame({
         'text': results['text'],
         'singular, %': results['%sing'],
         'plural, %': results['%plur'],
-    })
+        })
 
 grammar_verbs = pd.DataFrame({
         'text': results['text'],

@@ -7,7 +7,7 @@ def text_extraction(element):
     line_text = element.get_text()
 
     # Находим форматы текста
-    # инициализируем список со всеми форматами, встречающимися в строке текста
+    # Инициализируем список со всеми форматами, встречающимися в строке текста
     line_formats = []
     for text_line in element:
         if isinstance(text_line, LTTextContainer):

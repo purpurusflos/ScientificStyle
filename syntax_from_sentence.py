@@ -9,7 +9,7 @@ syntax.navec(navec)
 
 
 # Возвращаем список синтаксических зависимостей для всех токенов во всех предложениях текста.
-def get_UDs(text):
+def get_UDs(text: str) -> list:
     result = []
     # Разбиваем текст на предложения и получаем список токенов.
     for sentence in sentenize(text):
@@ -33,7 +33,7 @@ def get_UDs(text):
 
 
 # Подсчитываем безличные и остальные предложения в тексте.
-def impersonal_sentences(text):
+def impersonal_sentences(text: list) -> tuple:
     personal = 0
     impersonal = 0
     for sentence in text:
@@ -49,7 +49,7 @@ def impersonal_sentences(text):
 
 
 # Подсчитываем простые предложения, различные типы сложных предложений в тексте
-def compound_complex(text):
+def compound_complex(text: list) -> tuple:
     compound_sent = 0  # сложные предложения
     true_compound = 0  # сложносочиненные предложения
     complex_sent = 0  # сложноподчиненные предложения
@@ -72,7 +72,7 @@ def compound_complex(text):
 
 
 # Подсчитываем предложения с вводными конструкциями и без них.
-def introductory_words(text):
+def introductory_words(text: list) -> tuple:
     sent_with_intr_words = 0
     sent_without_intr_words = 0
     for sentence in text:
@@ -88,7 +88,7 @@ def introductory_words(text):
 
 
 # Подсчитываем предложения с причастными и деепричастными оборотами и без них.
-def participal_phrases(text):
+def participal_phrases(text: list) -> tuple:
     participal_phrase = 0
     adverb_phrase = 0
     no_phrases = 0

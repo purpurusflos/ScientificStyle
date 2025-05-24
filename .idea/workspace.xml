@@ -4,14 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aa72fc2a-2ff8-47ec-82db-bc49048cde1b" name="Changes" comment="Считается индекс читабельности для художки">
+    <list default="true" id="aa72fc2a-2ff8-47ec-82db-bc49048cde1b" name="Changes" comment="Добавлены комментарии">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/grammar_from_text.py" beforeDir="false" afterPath="$PROJECT_DIR$/grammar_from_text.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main_script.py" beforeDir="false" afterPath="$PROJECT_DIR$/main_script.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pdf_from_nsu_vestnik.py" beforeDir="false" afterPath="$PROJECT_DIR$/pdf_from_nsu_vestnik.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readability_index.py" beforeDir="false" afterPath="$PROJECT_DIR$/readability_index.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/syntax_from_sentence.py" beforeDir="false" afterPath="$PROJECT_DIR$/syntax_from_sentence.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/text_from_pdf.py" beforeDir="false" afterPath="$PROJECT_DIR$/text_from_pdf.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -350,7 +346,23 @@
       <option name="project" value="LOCAL" />
       <updated>1747573099027</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Добавлены комментарии">
+      <option name="closed" value="true" />
+      <created>1748009386624</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1748009386624</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Добавлены комментарии">
+      <option name="closed" value="true" />
+      <created>1748009959351</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1748009959351</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -366,6 +378,7 @@
     <MESSAGE value="Добавлены таблицы" />
     <MESSAGE value="Выборка статей" />
     <MESSAGE value="Считается индекс читабельности для художки" />
-    <option name="LAST_COMMIT_MESSAGE" value="Считается индекс читабельности для художки" />
+    <MESSAGE value="Добавлены комментарии" />
+    <option name="LAST_COMMIT_MESSAGE" value="Добавлены комментарии" />
   </component>
 </project>

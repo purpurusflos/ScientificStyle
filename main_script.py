@@ -60,7 +60,10 @@ results_index = {
         'index': []
         }
 
-def get_result_grammar(neut, femn, masc, nouns, sg, pl, pres, past, future, verbs, file):
+def get_result_grammar(
+        neut: float, femn: float, masc: float, nouns: float,
+        sg: float, pl: float, pres: float, past: float, future: float, verbs: float,
+        file: str):
     results['text'].append(file)
     results['nouns'].append(nouns)
 
@@ -77,8 +80,10 @@ def get_result_grammar(neut, femn, masc, nouns, sg, pl, pres, past, future, verb
     results['nouns/verbs'].append(round(nouns / verbs, 2))
 
 def get_result_syntax(
-            file, personal, impersonal, compound_sent, true_compound, complex_sent, simple_sent,
-            sent_with_intr_words, sent_without_intr_words, participal_phrase, adverb_phrase, no_phrases):
+            file: str, personal: float, impersonal: float, compound_sent: float, true_compound: float,
+            complex_sent: float, simple_sent: float,
+            sent_with_intr_words: float, sent_without_intr_words: float,
+        participal_phrase: float, adverb_phrase: float, no_phrases: float):
     results_syntax['text'].append(file)
     total = personal + impersonal
     results_syntax['personal'].append(round(100 / total * personal if total > 0 else 0, 2))
@@ -94,7 +99,7 @@ def get_result_syntax(
     results_syntax['adverb phrase'].append(round(100 / total * adverb_phrase if total > 0 else 0, 2))
     results_syntax['no phrases'].append(round(100 / total * no_phrases if total > 0 else 0, 2))
 
-def get_result_index(average_sentence_length, average_number_of_syllables, index, file):
+def get_result_index(average_sentence_length: float, average_number_of_syllables: float, index: float, file: str):
     results_index['text'].append(file)
     results_index['average sentence length'].append(round(average_sentence_length, 2))
     results_index['average number of syllables'].append(round(average_number_of_syllables, 2))

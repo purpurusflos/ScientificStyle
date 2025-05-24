@@ -3,7 +3,7 @@ import requests
 
 
 # По ссылке на pdf-файл скачиваем файл в указанную папку.
-def pdf_from_link(link, directory):
+def pdf_from_link(link: str, directory: str):
     # Проверяем HTTP response status code.
     response = requests.get(link)
     file_path = directory + '/' + str(link[-36:])
@@ -14,7 +14,7 @@ def pdf_from_link(link, directory):
 
 
 # Находим на сайте Вестника НГУ ссылки на pdf-файлы с научными статьями с 2007 до указанного года.
-def pdf_url_from_vestnik(year):
+def pdf_url_from_vestnik(year: int) -> list:
     pdf_links = []
     for year in range(2007, year + 1):
         # Получаем ссылку на выпуски определенного года.

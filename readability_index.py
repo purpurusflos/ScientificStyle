@@ -9,7 +9,7 @@ syntax.navec(navec)
 
 
 # Рассчитываем среднюю длину предложения в словах.
-def ave_length(sentences):
+def ave_length(sentences: list) -> float:
     words_count = 0
     sentences_count = len(sentences)
     for s in sentences:
@@ -20,7 +20,7 @@ def ave_length(sentences):
 
 
 # Рассчитываем среднюю длину слов в слогах.
-def ave_syllable(sent_tokens):
+def ave_syllable(sent_tokens: list) -> float:
     syllables_count = 0
     words = []
     for markup in syntax.map(sent_tokens):
@@ -36,7 +36,7 @@ def ave_syllable(sent_tokens):
 
 
 # Считаем индекс читабельности.
-def readability(text):
+def readability(text: str) -> tuple:
     sentences = []
     sent_tokens = []
     # Разбиваем текст на предложения и получаем список токенов.

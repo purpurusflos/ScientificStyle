@@ -3,7 +3,7 @@ from pdfminer.layout import LTTextContainer, LTChar
 
 
 # Извлекаем текст из указанного элемента.
-def text_extraction(element):
+def text_extraction(element) -> tuple:
     line_text = element.get_text()
 
     # Находим форматы текста.
@@ -23,7 +23,7 @@ def text_extraction(element):
     return line_text, format_per_line
 
 # Очищаем текст от знаков переноса на новую строку и объединяем в одну строку.
-def clean_text(page_content):
+def clean_text(page_content: list) -> str:
     text1 = ""
     text2 = ""
     for text in page_content:
@@ -33,12 +33,12 @@ def clean_text(page_content):
     split_text2 = text1.split("\n")
     clean_text2 = "".join(split_text2)
     text2 += clean_text2
-    # Возвращает строку с текстом
+    # Возвращает строку с текстом.
     return text2
 
 
 # Получаем текст основной части статьи из pdf-файла
-def get_text(file_path):
+def get_text(file_path: str) -> str:
     page_content = []
 
     for page_number, page in enumerate(extract_pages(file_path)):

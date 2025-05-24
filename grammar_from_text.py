@@ -10,7 +10,7 @@ def get_grammar(text):
     neut = femn = masc = nouns = sg = pl = pres = past = future = verbs = 0
 
     for word in words:
-        # получаем часть речи для слова
+        # Получаем часть речи для слова
         tag = morph.parse(word)[0].tag
         pos = str(tag.POS); gender = str(tag.gender); num = str(tag.number); tense = str(tag.tense)
         if pos == 'NOUN':
@@ -33,7 +33,7 @@ def get_grammar(text):
                 past += 1
             elif tense == 'futr':
                 future += 1
-    # возвращает целые числа: количество существительных среднего, женского и мужского рода, \ 
+    # Возвращает целые числа: количество существительных среднего, женского и мужского рода, \ 
     # существительных, существительных единственного и множественного числа, \
     # глаголов в форме настоящего, прошедшего и будущего времени, глаголов 
     return neut, femn, masc, nouns, sg, pl, pres, past, future, verbs
